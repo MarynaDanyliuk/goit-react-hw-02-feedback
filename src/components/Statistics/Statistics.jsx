@@ -3,29 +3,38 @@ import PropTypes from 'prop-types';
 import css from './Statistics.module.css';
 
 export class Statistics extends React.Component {
-  constructor() {
-    super();
-
-    this.state = {
-      good: 0,
-      neutral: 0,
-      bad: 0,
-    };
-  }
+  state = {
+    good: 0,
+    neutral: 0,
+    bad: 0,
+  };
 
   handleGood = event => {
+    this.setState(prevState => {
+      return {
+        good: prevState.good + 1,
+      };
+    });
     console.log('Кликнули Good');
     console.log(this);
   };
 
   handleNeutral = () => {
+    this.setState(prevState => {
+      return {
+        neutral: prevState.neutral + 1,
+      };
+    });
     console.log('Кликнули Neutral');
-    console.log(this);
   };
 
   handleBad = () => {
+    this.setState(prevState => {
+      return {
+        bad: prevState.bad + 1,
+      };
+    });
     console.log('Кликнули Bad');
-    console.log(this);
   };
 
   render() {
