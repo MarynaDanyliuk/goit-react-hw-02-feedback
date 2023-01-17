@@ -13,9 +13,6 @@ export class App extends React.Component {
     //   ___
   };
   state = {
-    // good: 0,
-    // neutral: 0,
-    // bad: 0,
     good: this.props.initialGood,
     neutral: this.props.initialNeutral,
     bad: this.props.initialBad,
@@ -28,7 +25,7 @@ export class App extends React.Component {
       };
     });
     console.log('Кликнули Good');
-    console.log(this);
+    // console.log(this);
   };
 
   handleNeutral = () => {
@@ -49,13 +46,32 @@ export class App extends React.Component {
     console.log('Кликнули Bad');
   };
 
-  // countTotalFeedback() {
-  //   return {};
-  // }
+  countTotalFeedback = ({ good, neutral, bad }) => {
+    const total = good + neutral + bad;
+    return total;
+  };
 
-  // countPositiveFeedbackPercentage() {
-  //   return {};
-  // }
+  countPositiveFeedbackPercentage({ good, neutral, bad }) {
+    const positivePercentage = (good / (good + neutral + bad)) * 100 || 0;
+    return positivePercentage;
+  }
+
+  // countTotalFeedback = () => {
+  //   // return {
+  //   //   // total: this.initialTotal,
+  //   //   // total: this.state.good + this.state.neutral + this.state.bad,
+  //   // };
+  // };
+
+  // countPositiveFeedbackPercentage = () => {
+  //   return {
+  //     positivePercentage:
+  //       (this.state.good /
+  //         (this.state.good + this.state.neutral + this.state.bad)) *
+  //         100 || 0,
+  //   };
+  // };
+
   render() {
     return (
       <div
@@ -73,8 +89,10 @@ export class App extends React.Component {
             good={this.state.good}
             neutral={this.state.neutral}
             bad={this.state.bad}
-            total={''}
-            positivePercentage={''}
+            total={this.countTotalFeedback(this.state)}
+            positivePercentage={this.countPositiveFeedbackPercentage(
+              this.state
+            )}
           />
         </Section>
 

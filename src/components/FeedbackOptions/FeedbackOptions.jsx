@@ -1,5 +1,5 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import css from './FeedbackOptions.module.css';
 
 export const FeedbackOptions = ({ options, onLeaveFeedback }) => {
@@ -7,6 +7,7 @@ export const FeedbackOptions = ({ options, onLeaveFeedback }) => {
   //   const {} = onLeaveFeedback;
 
   return (
+    // if(зібрано хоч одін відгук)
     <ul className={css['button-list']}>
       <li>
         <button type="button" onClick={onHandleGood}>
@@ -27,16 +28,6 @@ export const FeedbackOptions = ({ options, onLeaveFeedback }) => {
   );
 };
 
-// export default FeedbackOptions;
-
 FeedbackOptions.propTypes = {
-  //   options: PropTypes.arrayOf(PropTypes.shape),
-  // title: PropTypes.string,
-  // stats: PropTypes.arrayOf(
-  //   PropTypes.shape({
-  //     id: PropTypes.string.isRequired,
-  //     label: PropTypes.string.isRequired,
-  //     percentage: PropTypes.number.isRequired,
-  //   })
-  // ),
+  options: PropTypes.shape(),
 };
