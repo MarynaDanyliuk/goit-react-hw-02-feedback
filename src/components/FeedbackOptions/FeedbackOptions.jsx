@@ -7,13 +7,6 @@ import css from './FeedbackOptions.module.css';
 export const FeedbackOptions = ({ options }, onLeaveFeedback) => {
   const { onHandleGood, onHandleNeutral, onHandleBad } = options;
 
-  // const { key } = onLeaveFeedback;
-
-  // const buttonsId = ['01', '02', '03'];
-  // const btnActive = buttonsId[0];
-
-  // 'btn_active';
-
   return (
     <ul className={css['button-list']}>
       <li>
@@ -38,17 +31,3 @@ export const FeedbackOptions = ({ options }, onLeaveFeedback) => {
 FeedbackOptions.propTypes = {
   options: PropTypes.shape(),
 };
-
-// key = { key };
-
-// {
-//   stats.map(stat => (
-//     <li key={stat.id} className={css.item}>
-//       <span className={css.label}>{stat.label}</span>
-//       <span className={css.percentage}>
-//         {stat.percentage}
-//         {`%`}
-//       </span>
-//     </li>
-//   ));
-// }
