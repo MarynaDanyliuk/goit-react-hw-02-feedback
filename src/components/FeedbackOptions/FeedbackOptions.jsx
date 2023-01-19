@@ -6,6 +6,7 @@ import css from './FeedbackOptions.module.css';
 
 export const FeedbackOptions = ({ options }, onLeaveFeedback) => {
   const { onHandleGood, onHandleNeutral, onHandleBad } = options;
+
   // const { key } = onLeaveFeedback;
 
   // const buttonsId = ['01', '02', '03'];

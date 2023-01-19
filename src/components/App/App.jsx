@@ -19,18 +19,18 @@ export class App extends React.Component {
     bad: this.props.initialBad,
   };
 
-  active = () => {
-    this.setState(prevState => {
-      return { good: prevState.good > 0 };
-    });
-    // if (this.setState(prevState => {
-    // return { neutral: !prevState.neutral };
-    // }))
-    //   if (this.setState(prevState => {
-    // return { bad: !prevState.bad };
-    //   }))
-    //     else return
-  };
+  // active = () => {
+  //   this.setState(prevState => {
+  //     return { good: prevState.good > 0 };
+  //   });
+  // if (this.setState(prevState => {
+  // return { neutral: !prevState.neutral };
+  // }))
+  //   if (this.setState(prevState => {
+  // return { bad: !prevState.bad };
+  //   }))
+  //     else return
+  // };
 
   handleGood = event => {
     this.setState(prevState => {
@@ -59,15 +59,21 @@ export class App extends React.Component {
     console.log('Кликнули Bad');
   };
 
-  countTotalFeedback = ({ good, neutral, bad }) => {
+  countTotalFeedback({ good, neutral, bad }) {
     return good + neutral + bad;
     // return total;
-  };
+  }
 
   countPositiveFeedbackPercentage({ good, neutral, bad }) {
     return ((good / (good + neutral + bad)) * 100 || 0).toFixed();
     // return positivePercentage;
   }
+
+  onLeaveFeedback = name => {
+    this.setState(prevState => {
+      return { [name]: prevState[name] + 1 };
+    });
+  };
 
   render() {
     const { good, neutral, bad } = this.state;
@@ -78,8 +84,6 @@ export class App extends React.Component {
           display: 'flex',
           flexDirection: `column`,
           marginLeft: 40,
-          // justifyContent: 'center',
-          // alignItems: 'center',
           fontSize: 20,
           color: '#010101',
         }}
@@ -92,23 +96,26 @@ export class App extends React.Component {
               onHandleBad: this.handleBad,
             }}
             onLeaveFeedback={{
-              key: this.active,
+              onLeaveFeedback: this.onLeaveFeedback,
             }}
           />
         </Section>
 
         <Section title="Statistics">
-          <Notification message="There is no feedback"></Notification>
-          <Statistics
-            good={good}
-            neutral={neutral}
-            bad={bad}
-            total={this.countTotalFeedback(this.state)}
-            positivePercentage={this.countPositiveFeedbackPercentage(
-              this.state,
-              this.countTotalFeedback
-            )}
-          />
+          {this.countTotalFeedback(this.state) > 0 ? (
+            <Statistics
+              good={good}
+              neutral={neutral}
+              bad={bad}
+              total={this.countTotalFeedback(this.state)}
+              positivePercentage={this.countPositiveFeedbackPercentage(
+                this.state,
+                this.countTotalFeedback
+              )}
+            />
+          ) : (
+            <Notification message="There is no feedback"></Notification>
+          )}
         </Section>
       </div>
     );
