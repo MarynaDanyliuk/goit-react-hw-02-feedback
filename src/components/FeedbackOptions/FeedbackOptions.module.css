@@ -4,5 +4,8 @@
 
 .button {
   width: 100px;
+}
+
+.list_item:not(:last-child) {
   margin-right: 30px;
 }

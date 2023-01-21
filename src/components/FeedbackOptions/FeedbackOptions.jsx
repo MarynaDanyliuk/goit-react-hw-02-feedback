@@ -7,17 +7,17 @@ export const FeedbackOptions = ({ options }, onLeaveFeedback) => {
 
   return (
     <ul className={css['button-list']}>
-      <li>
+      <li className={css.list_item}>
         <button className={css.button} type="button" onClick={onHandleGood}>
           Good
         </button>
       </li>
-      <li>
+      <li className={css.list_item}>
         <button className={css.button} type="button" onClick={onHandleNeutral}>
           Neutral
         </button>
       </li>
-      <li>
+      <li className={css.list_item}>
         <button className={css.button} type="button" onClick={onHandleBad}>
           Bad
         </button>
@@ -28,5 +28,4 @@ export const FeedbackOptions = ({ options }, onLeaveFeedback) => {
 
 FeedbackOptions.propTypes = {
   options: PropTypes.shape(),
-  onLeaveFeedback: PropTypes.func,
 };
