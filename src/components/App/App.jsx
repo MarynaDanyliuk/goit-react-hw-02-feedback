@@ -18,39 +18,44 @@ export class App extends React.Component {
     bad: this.props.initialBad,
   };
 
-  handleGood = event => {
-    this.setState(prevState => {
-      return {
-        good: prevState.good + 1,
-      };
-    });
-    console.log('Кликнули Good');
+  handleClick = optionId => {
+    const key = Object.keys(this.state)[optionId];
+    this.setState(prevState => ({ [key]: prevState[key] + 1 }));
   };
 
-  handleNeutral = () => {
-    this.setState(prevState => {
-      return {
-        neutral: prevState.neutral + 1,
-      };
-    });
-    console.log('Кликнули Neutral');
-  };
+  // handleGood = event => {
+  //   this.setState(prevState => {
+  //     return {
+  //       good: prevState.good + 1,
+  //     };
+  //   });
+  //   console.log('Кликнули Good');
+  // };
 
-  handleBad = () => {
-    this.setState(prevState => {
-      return {
-        bad: prevState.bad + 1,
-      };
-    });
-    console.log('Кликнули Bad');
-  };
+  // handleNeutral = () => {
+  //   this.setState(prevState => {
+  //     return {
+  //       neutral: prevState.neutral + 1,
+  //     };
+  //   });
+  //   console.log('Кликнули Neutral');
+  // };
+
+  // handleBad = () => {
+  //   this.setState(prevState => {
+  //     return {
+  //       bad: prevState.bad + 1,
+  //     };
+  //   });
+  //   console.log('Кликнули Bad');
+  // };
 
   countTotalFeedback({ good, neutral, bad }) {
-    return good + neutral + bad;
+    return Number(good + neutral + bad);
   }
 
   countPositiveFeedbackPercentage({ good, neutral, bad }) {
-    return ((good / (good + neutral + bad)) * 100 || 0).toFixed();
+    return Number(((good / (good + neutral + bad)) * 100 || 0).toFixed());
     // return positivePercentage;
   }
 
@@ -75,14 +80,8 @@ export class App extends React.Component {
       >
         <Section title="Please leave feedback">
           <FeedbackOptions
-            options={{
-              onHandleGood: this.handleGood,
-              onHandleNeutral: this.handleNeutral,
-              onHandleBad: this.handleBad,
-            }}
-            onLeaveFeedback={{
-              onLeaveFeedback: this.onLeaveFeedback,
-            }}
+            options={Object.keys(this.state)}
+            onLeaveFeedback={this.handleClick}
           />
         </Section>
 
@@ -112,3 +111,15 @@ App.propTypes = {
   initialNeutral: PropTypes.number,
   initialBad: PropTypes.number,
 };
+
+// ___________________________________
+/* <FeedbackOptions
+            options={{
+              onHandleGood: this.handleGood,
+              onHandleNeutral: this.handleNeutral,
+              onHandleBad: this.handleBad,
+            }}
+            onLeaveFeedback={{
+              onLeaveFeedback: this.onLeaveFeedback,
+            }}
+          /> */
