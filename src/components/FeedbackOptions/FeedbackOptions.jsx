@@ -28,4 +28,5 @@ export const FeedbackOptions = ({ options }, onLeaveFeedback) => {
 
 FeedbackOptions.propTypes = {
   options: PropTypes.shape(),
+  onLeaveFeedback: PropTypes.func,
 };

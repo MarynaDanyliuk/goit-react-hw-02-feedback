@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Section } from 'components/Section/Section';
 import { FeedbackOptions } from '../FeedbackOptions/FeedbackOptions';
 import { Statistics } from 'components/Statistics/Statistics';
@@ -10,27 +11,12 @@ export class App extends React.Component {
     initialNeutral: 0,
     initialBad: 0,
   };
-  static propTypes = {
-    //   ___
-  };
+
   state = {
     good: this.props.initialGood,
     neutral: this.props.initialNeutral,
     bad: this.props.initialBad,
   };
-
-  // active = () => {
-  //   this.setState(prevState => {
-  //     return { good: prevState.good > 0 };
-  //   });
-  // if (this.setState(prevState => {
-  // return { neutral: !prevState.neutral };
-  // }))
-  //   if (this.setState(prevState => {
-  // return { bad: !prevState.bad };
-  //   }))
-  //     else return
-  // };
 
   handleGood = event => {
     this.setState(prevState => {
@@ -61,7 +47,6 @@ export class App extends React.Component {
 
   countTotalFeedback({ good, neutral, bad }) {
     return good + neutral + bad;
-    // return total;
   }
 
   countPositiveFeedbackPercentage({ good, neutral, bad }) {
@@ -121,3 +106,9 @@ export class App extends React.Component {
     );
   }
 }
+
+App.propTypes = {
+  initialGood: PropTypes.number,
+  initialNeutral: PropTypes.number,
+  initialBad: PropTypes.number,
+};
