@@ -6,6 +6,7 @@ export const FeedbackOptions = ({ options, onLeaveFeedback }) => {
   return (
     <ul className={css['button-list']}>
       {options.map((option, index) => {
+        const optionName = options[index];
         return (
           <li className={css.list_item} key={option}>
             <button
@@ -13,7 +14,7 @@ export const FeedbackOptions = ({ options, onLeaveFeedback }) => {
               type="button"
               onClick={() => onLeaveFeedback(index)}
             >
-              {options[index]}
+              {optionName}
             </button>
           </li>
         );
