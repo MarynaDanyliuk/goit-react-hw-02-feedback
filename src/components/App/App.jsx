@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Section } from 'components/Section/Section';
 import { FeedbackOptions } from '../FeedbackOptions/FeedbackOptions';
 import { Statistics } from 'components/Statistics/Statistics';
@@ -100,12 +99,6 @@ export class App extends React.Component {
     );
   }
 }
-
-App.propTypes = {
-  initialGood: PropTypes.number,
-  initialNeutral: PropTypes.number,
-  initialBad: PropTypes.number,
-};
 
 // ___________________________________
 /* <FeedbackOptions
