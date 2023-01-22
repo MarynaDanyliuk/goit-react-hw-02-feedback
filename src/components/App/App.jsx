@@ -6,20 +6,15 @@ import { Statistics } from 'components/Statistics/Statistics';
 import { Notification } from 'components/Notification/Notification';
 
 export class App extends React.Component {
-  static defaultProps = {
-    initialGood: 0,
-    initialNeutral: 0,
-    initialBad: 0,
-  };
-
   state = {
-    good: this.props.initialGood,
-    neutral: this.props.initialNeutral,
-    bad: this.props.initialBad,
+    good: 0,
+    neutral: 0,
+    bad: 0,
   };
 
   handleClick = optionId => {
     const key = Object.keys(this.state)[optionId];
+    // const key = optionId;
     this.setState(prevState => ({ [key]: prevState[key] + 1 }));
   };
 
