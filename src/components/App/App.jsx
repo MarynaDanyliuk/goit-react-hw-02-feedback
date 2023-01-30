@@ -12,8 +12,8 @@ export class App extends React.Component {
   };
 
   handleClick = optionId => {
-    const key = Object.keys(this.state)[optionId];
-    // const key = optionId;
+    // const key = Object.keys(this.state)[optionId];
+    const key = optionId;
     this.setState(prevState => ({ [key]: prevState[key] + 1 }));
   };
 

@@ -5,16 +5,16 @@ import css from './FeedbackOptions.module.css';
 export const FeedbackOptions = ({ options, onLeaveFeedback }) => {
   return (
     <ul className={css['button-list']}>
-      {options.map((option, index) => {
-        const optionName = options[index];
+      {options.map((optionId, index) => {
+        // const optionName = options[index];
         return (
-          <li className={css.list_item} key={option}>
+          <li className={css.list_item} key={optionId}>
             <button
               className={css.button}
               type="button"
-              onClick={() => onLeaveFeedback(index)}
+              onClick={() => onLeaveFeedback(optionId)}
             >
-              {optionName}
+              {optionId}
             </button>
           </li>
         );
